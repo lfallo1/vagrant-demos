@@ -6,7 +6,8 @@ Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/trusty64"
   config.vm.hostname = "tomcat8"
 
-  config.vm.network "forwarded_port", guest: 8080, host: 8080
+  # vm port 8080 will be reachable when the host machine requests port 7777
+  config.vm.network "forwarded_port", guest: 8080, host: 7777
 
   config.vm.provision "shell", path: "provision-tomcat.sh"
 
